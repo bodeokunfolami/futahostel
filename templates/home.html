@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+<!-- prettier-ignore -->
+{% load static %}
+
+<!-- prettier-ignore -->
+{% block content %}
+<div class="container pt-5">
+  <div class="mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-7">
+        <h1 class="display-4 fw-bold text-uppercase mb-3">
+          Hostel Accomodation Made Easy
+        </h1>
+        <a
+          href="{% url 'users:register'%}"
+          class="btn btn-primary btn-lg text-uppercase"
+          >Apply for hostel</a
+        >
+      </div>
+      <div class="col-md-5">
+        <img
+          src="{% static 'img/hostel.jpg'%}"
+          alt="hostel"
+          class="img-fluid"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

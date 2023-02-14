@@ -1,0 +1,103 @@
+<!-- prettier-ignore -->
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+<!-- prettier-ignore -->
+{% block content %}
+<div class="header py-5">
+  <div class="container text-center">
+    <h1 class="display-4 fw-bold">Dashboard</h1>
+  </div>
+</div>
+<div class="container mb-5">
+  <div class="row">
+    <div class="col-md-4">{% include 'inc/sidebar.html' %}</div>
+    <div class="col-md-8">
+      <div class="card mb-4">
+        <div class="card-header">
+          <h3>Profile Info</h3>
+        </div>
+        <div class="card-body">
+          <div class="text-center mb-4">
+            <img
+              src="{{profile.profile_pic.url}}"
+              width="100px"
+              height="100px"
+              class="rounded border border-3 border-dark profile_pic"
+            />
+          </div>
+          <table class="table table-bordered">
+            <tr>
+              <th>Username</th>
+              <td class="text-capitalize">{{request.user.username}}</td>
+            </tr>
+            <tr>
+              <th>Email</th>
+              <td>{{request.user.email}}</td>
+            </tr>
+            {% if profile is not None %}
+            <tr>
+              <th>Level</th>
+              <td>{{profile.level}}L</td>
+            </tr>
+            <tr>
+              <th>School</th>
+              <td>{{profile.school}}</td>
+            </tr>
+            <tr>
+              <th>Department</th>
+              <td>{{profile.department}}</td>
+            </tr>
+            {% endif %}
+            <tr>
+              <th>Hostel</th>
+              <td>NIL</td>
+            </tr>
+          </table>
+          <div class="text-center">
+            <a
+              href="{% url 'users:app' %}"
+              class="btn btn-primary btn-lg text-capitalize"
+              >Apply for hostel</a
+            >
+          </div>
+        </div>
+      </div>
+      {% if application %}
+      <div class="card">
+        <div class="card-header">
+          <h3>Application</h3>
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered">
+            <tr>
+              <th>Hostel</th>
+              <td>{{application.hostel.name }}</td>
+            </tr>
+            <tr>
+              <th>Room</th>
+              <td>{{application.beds }} beds per room</td>
+            </tr>
+            <tr>
+              <th>Application Date</th>
+              <td>{{application.date }}</td>
+            </tr>
+            <tr>
+              <th>Application Status</th>
+              <td>
+                {% if application.status == 'P' %}
+                <span class="badge bg-info text-uppercase">pending</span>
+                {% elif application.status == 'A' %}
+                <span class="badge bg-success text-uppercase">approved</span>
+                {% else %}
+                <span class="badge bg-danger text-uppercase">not approved</span>
+                {% endif %}
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock content %}

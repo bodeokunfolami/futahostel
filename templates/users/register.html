@@ -1,0 +1,26 @@
+<!-- prettier-ignore -->
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+<!-- prettier-ignore -->
+{% block content %}
+<div class="container">
+  <div class="col-md-6 offset-md-3">
+    <div class="card mt-5">
+      <div class="card-body">
+        <form action="" method="post">
+          {% csrf_token %}
+          <!-- prettier-ignore -->
+          {{ form|crispy }}
+          <div class="d-grid">
+            <button class="btn btn-primary">Create account</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <p class="text-center">
+      Already have an account
+      <a href="{% url 'users:login' %}">Sign In</a>
+    </p>
+  </div>
+</div>
+{% endblock %}

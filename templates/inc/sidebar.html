@@ -1,0 +1,28 @@
+<aside>
+  <ul class="list-group">
+    {% url 'users:dashboard' as dashboard_url %}
+    <li
+      class="list-group-item {% if request.path == dashboard_url %}active{% endif %}"
+    >
+      <a href="{{ dashboard_url }}" class="nav-link">Dashboard</a>
+    </li>
+    {% url 'users:app' as hostel_url %}
+    <li
+      class="list-group-item {% if request.path == hostel_url or hostel_url in request.path %}active{% endif %}"
+    >
+      <a href="{{hostel_url}}" class="nav-link">Hostel</a>
+    </li>
+    {% url 'users:edit_profile' as edit_url %}
+    <li
+      class="list-group-item {% if request.path == edit_url %}active{% endif %}"
+    >
+      <a href="{{edit_url}}" class="nav-link">Profile</a>
+    </li>
+    {% url 'users:change_password' as change_password_url %}
+    <li
+      class="list-group-item {% if request.path == change_password_url %}active{% endif %}"
+    >
+      <a href="{{change_password_url}}" class="nav-link">Change Password</a>
+    </li>
+  </ul>
+</aside>
