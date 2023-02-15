@@ -5,6 +5,6 @@ env_file = environ.Path('.env')
 
 environ.Env.read_env(env_file)
 
-DATABASES = {
-    'default': env.db()
-}
+# DATABASES = {
+#     'default': env.db()
+# }
