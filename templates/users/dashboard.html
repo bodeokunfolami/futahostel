@@ -17,6 +17,7 @@
           <h3>Profile Info</h3>
         </div>
         <div class="card-body">
+          {% if profile.profile_pic %}
           <div class="text-center mb-4">
             <img
               src="{{profile.profile_pic.url}}"
@@ -25,6 +26,8 @@
               class="rounded border border-dark profile_pic"
             />
           </div>
+          {% endif %}
+
           <table class="table table-bordered">
             <tr>
               <th>Username</th>

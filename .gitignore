@@ -2,3 +2,4 @@ venv/
 .env
 assets/
 __pycache__/
+db.sqlite3
