@@ -3,58 +3,62 @@
 {% load crispy_forms_tags %}
 <!-- prettier-ignore -->
 {% block content %}
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-    <div class="col-md-8 offset-md-4">
-      <h1 class="mb-4 fw-bold">Hostel Application</h1>
+    <div class="col-md-10 offset-md-2">
+      <div class="container">
+        <h1 class="mb-4 fw-bold">Hostel Application</h1>
+      </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-4">{% include 'inc/sidebar.html' %}</div>
-    <div class="col-md-8">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <a href="{% url 'users:app' %}">Hostels</a>
-          </li>
-          <li class="breadcrumb-item active" aria-current="page">
-            {{hostel.name}}
-          </li>
-        </ol>
-      </nav>
+    <div class="col-md-2">{% include 'inc/sidebar.html' %}</div>
+    <div class="col-md-10">
+      <div class="container">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="{% url 'users:app' %}">Hostels</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              {{hostel.name}}
+            </li>
+          </ol>
+        </nav>
 
-      <div class="row">
-        <div class="col-md-12 mb-4">
-          <div class="card">
-            <div class="card-body">
-              <h3>{{hostel.name}}</h3>
-              <table class="table table-bordered">
-                <tr>
-                  <th>Capacity</th>
-                  <td>{{hostel.beds}}</td>
-                </tr>
-                <tr>
-                  <th>Hostel Type</th>
-                  <td>
-                    {% if hostel.hostel_type == 'F' %}
-                    <span class="badge bg-info">Female</span>
-                    {% else %}
-                    <span class="badge bg-info">Male</span>
-                    {% endif %}
-                  </td>
-                </tr>
-                <tr>
-                  <th>Location</th>
-                  <td>{{hostel.location}}</td>
-                </tr>
-              </table>
-              <!-- prettier-ignore -->
-              <form action="" method="POST">{% csrf_token %}
+        <div class="row">
+          <div class="col-md-12 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <h3>{{hostel.name}}</h3>
+                <table class="table table-bordered">
+                  <tr>
+                    <th>Capacity</th>
+                    <td>{{hostel.beds}}</td>
+                  </tr>
+                  <tr>
+                    <th>Hostel Type</th>
+                    <td>
+                      {% if hostel.hostel_type == 'F' %}
+                      <span class="badge bg-info">Female</span>
+                      {% else %}
+                      <span class="badge bg-info">Male</span>
+                      {% endif %}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Location</th>
+                    <td>{{hostel.location}}</td>
+                  </tr>
+                </table>
+                <!-- prettier-ignore -->
+                <form action="" method="POST">{% csrf_token %}
                 {{form|crispy}}
                 <button class="btn btn-primary text-capitalize">
                   Sumit application
                 </button>
               </form>
+              </div>
             </div>
           </div>
         </div>

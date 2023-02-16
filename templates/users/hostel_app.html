@@ -3,50 +3,54 @@
 {% load crispy_forms_tags %}
 <!-- prettier-ignore -->
 {% block content %}
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-    <div class="col-md-8 offset-md-4">
-      <h1 class="mb-4 fw-bold">Hostel Application</h1>
+    <div class="col-md-10 offset-md-2">
+      <div class="container">
+        <h1 class="mb-4 fw-bold">Hostel Application</h1>
+      </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-4">{% include 'inc/sidebar.html' %}</div>
-    <div class="col-md-8">
-      <div class="row">
-        {% for hostel in hostels %}
-        <div class="col-md-6 mb-4">
-          <div class="card">
-            <div class="card-body">
-              <h3>{{hostel.name}}</h3>
-              <table class="table table-bordered">
-                <tr>
-                  <th>Capacity</th>
-                  <td>{{hostel.beds}}</td>
-                </tr>
-                <tr>
-                  <th>Hostel Type</th>
-                  <td>
-                    {% if hostel.hostel_type == 'F' %}
-                    <span class="badge bg-info">Female</span>
-                    {% else %}
-                    <span class="badge bg-info">Male</span>
-                    {% endif %}
-                  </td>
-                </tr>
-                <tr>
-                  <th>Location</th>
-                  <td>{{hostel.location}}</td>
-                </tr>
-              </table>
-              <div class="text-center">
-                <a href="{{ hostel.get_absolute_url}}" class="btn btn-primary"
-                  >Apply</a
-                >
+    <div class="col-md-2">{% include 'inc/sidebar.html' %}</div>
+    <div class="col-md-10">
+      <div class="container">
+        <div class="row">
+          {% for hostel in hostels %}
+          <div class="col-md-6 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <h3>{{hostel.name}}</h3>
+                <table class="table table-bordered">
+                  <tr>
+                    <th>Capacity</th>
+                    <td>{{hostel.beds}}</td>
+                  </tr>
+                  <tr>
+                    <th>Hostel Type</th>
+                    <td>
+                      {% if hostel.hostel_type == 'F' %}
+                      <span class="badge bg-info">Female</span>
+                      {% else %}
+                      <span class="badge bg-info">Male</span>
+                      {% endif %}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Location</th>
+                    <td>{{hostel.location}}</td>
+                  </tr>
+                </table>
+                <div class="text-center">
+                  <a href="{{ hostel.get_absolute_url}}" class="btn btn-primary"
+                    >Apply</a
+                  >
+                </div>
               </div>
             </div>
           </div>
+          {% endfor %}
         </div>
-        {% endfor %}
       </div>
     </div>
   </div>
